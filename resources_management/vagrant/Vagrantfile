@@ -1,0 +1,56 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+ENV['VAGRANT_NO_PARALLEL'] = 'yes'
+
+Vagrant.configure(2) do |config|
+
+  config.vm.define "nodeUbuntu_20.04" do |node|
+    node.vm.box = "ubuntu/focal64"
+    node.vm.hostname = "nodeUbuntu2004.vm.com"
+    node.vm.network "private_network", ip: "192.168.56.101"
+    node.vm.provider "virtualbox" do |v|
+      v.name = "nodeUbuntu_20.04"
+      v.memory = 1024
+      v.cpus = 1
+    end
+  end
+
+  config.vm.define "nodeDebian" do |node|
+    node.vm.box = "debian/jessie64"
+    node.vm.hostname = "nodeDebian.vm.com"
+    node.vm.network "private_network", ip: "192.168.56.102"
+    node.vm.provider "virtualbox" do |v|
+      v.name = "nodeDebian"
+      v.memory = 1024
+      v.cpus = 1
+    end
+  end
+
+  config.vm.define "nodeUbuntu_18.04" do |node|
+    node.vm.box = "ubuntu/bionic64"
+    node.vm.hostname = "nodeUbuntu1804.example.com"
+    node.vm.network "private_network", ip: "192.168.56.103"
+    node.vm.provider "virtualbox" do |v|
+      v.name = "nodeUbuntu_18.04"
+      v.memory = 1024
+      v.cpus = 1
+    end
+  end
+
+  #NodeCount = 3
+  ## Kubernetes Nodes
+  #(1..NodeCount).each do |i|
+  #  config.vm.define "node#{i}" do |node|
+  #    node.vm.box = "bento/ubuntu-20.04"
+  #    node.vm.hostname = "node#{i}.example.com"
+  #    node.vm.network "private_network", ip: "192.168.56.10#{i}"
+  #    node.vm.provider "virtualbox" do |v|
+  #      v.name = "node#{i}"
+  #      v.memory = 2048
+  #      v.cpus = 1
+  #    end
+  #  end
+  #end
+
+end
