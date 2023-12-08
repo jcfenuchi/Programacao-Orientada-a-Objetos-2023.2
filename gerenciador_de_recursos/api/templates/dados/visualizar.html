@@ -1,0 +1,96 @@
+<style>
+    .container {
+        margin: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #e5e5e5;
+    }
+</style>
+
+<div class="container">
+	<table>
+		<tr>
+			<th>hostname</th>
+			<th>Host_ip</th>
+			<th>hour_now</th>
+			<th>cpu_model</th>
+			<th>cpu_architecture</th>
+			<th>cpu_cores</th>
+			<th>cpu_logical_cores</th>
+			<th>cpu_Frequency</th>
+			<th>load_1min</th>
+			<th>load_5min</th>
+			<th>load_15min</th>
+			<th>memory_total</th>
+			<th>memory_available</th>
+			<th>memory_used</th>
+			<th>memory_percent</th>
+			<th>disk_total</th>
+			<th>disk_free</th>
+			<th>disk_used</th>
+			<th>disk_percent</th>
+			<th>boot_time</th>
+			<th>boot_uptime</th>
+			<th>batery_percent_charge</th>
+			<th>batery_power_is_plug</th>
+			<th>system_version</th>
+			<th>system_system_type</th>
+			<th>system_distribution</th>
+			<th>network_bytes_recv</th>
+			<th>network_bytes_send</th>
+		</tr>
+		{% for data in meta_data%}
+		<tr>
+			<th>{{data.hostname}}</th>
+			<th>{{data.Host_ip}}</th>
+			<th>{{ data.hour_now }}</th>
+			<th>{{data.cpu_model}}</th>
+			<th>{{data.cpu_architecture}}</th>
+			<th>{{data.cpu_cores}}</th>
+			<th>{{data.cpu_logical_cores}}</th>
+			<th>{{data.cpu_Frequency}}</th>
+			<th>{{data.load_1min}}</th>
+			<th>{{data.load_5min}}</th>
+			<th>{{data.load_15min}}</th>
+			<th>{{data.memory_total}}</th>
+			<th>{{data.memory_available}}</th>
+			<th>{{data.memory_used}}</th>
+			<th>{{data.memory_percent}}</th>
+			<th>{{data.disk_total}}</th>
+			<th>{{data.disk_free}}</th>
+			<th>{{data.disk_used}}</th>
+			<th>{{data.disk_percent}}</th>
+			<th>{{ data.boot_time }}</th>
+			<th>{{ data.boot_uptime }}</th>
+			<th>{{data.batery_percent_charge}}</th>
+			<th>{{data.batery_power_is_plug}}</th>
+			<th>{{data.system_version}}</th>
+			<th>{{data.system_system_type}}</th>
+			<th>{{data.system_distribution}}</th>
+			<th>{{data.network_bytes_recv}}</th>
+			<th>{{data.network_bytes_send}}</th>
+		</tr>
+		{% endfor %}	
+	</table>
+</div>
