@@ -32,7 +32,7 @@ class Agent_mon(Monitoring):
 
     def __send_hwr_info(self, sock):
         sock.sendall(json.dumps({socket.gethostname():self.get_system_info()}).encode('utf-8'))
-        sleep(5)
+        sleep(15)
 
     def __del__(self):
         print("Finish!")

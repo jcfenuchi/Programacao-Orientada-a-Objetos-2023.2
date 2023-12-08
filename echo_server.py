@@ -4,16 +4,18 @@ import socket
 from json import loads
 from threading import Thread
 from threading import Event
-
+from requests import post
+import requests
 
 class hardware_server:
     def __init__(self, host: str = "127.0.0.1", port: int = 65432):
         # Port to listen on (non-privileged ports are > 1023)
+        self.__mainURL = 'http://localhost:8000/api/send/'
         self.__hardwares_info = {}
         self.__threads = {}
         self.__start_socket(host, port)
 
-    def __handle_client(self,event , client_sock, addr):
+    def __handle_client(self, event, client_sock, addr):
         print(client_sock, addr)
         with client_sock:
             while True:
@@ -25,7 +27,11 @@ class hardware_server:
                 cli_hwr_info = loads(data.decode('utf-8'))
                 [cli_hwr_info[key].update({"ip_client": addr[0]}) for key in cli_hwr_info.keys()]
                 self.__hardwares_info.update(cli_hwr_info)
-                print(self.__hardwares_info)
+                try:
+                    post(self.__mainURL, json=cli_hwr_info)
+                except requests.exceptions.ConnectionError:
+                    print("Error while send POST to server!, server API is offline ?")
+                    continue
             self.__threads.pop(addr)
 
     def __start_socket(self, host, port):
