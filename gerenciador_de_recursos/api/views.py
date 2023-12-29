@@ -4,30 +4,21 @@ from .models import HardwareInfo
 from django.db.models import Max
 from django.utils import timezone
 from django.http import JsonResponse
-from django.utils.html import escape
 from django.shortcuts import render
 
 @api_view(['GET'])
 def home(request):
-    # Obtém o parâmetro de consulta 'hostname' da URL
     hostname = request.GET.get('hostname', '')
-
-    # Consulta para obter as informações mais recentes sobre o host fornecido
     informacoes_host = (
         HardwareInfo.objects
         .filter(hostname=hostname)
-        .order_by('-hour_now')  # Ordena pela data mais recente
-        .first()  # Limita a consulta para obter apenas o primeiro registro
+        .order_by('-hour_now')
+        .first()
     )
 
     if informacoes_host:
-        # Formatar a data e hora no formato pt-BR
         data_hora_formatada = informacoes_host.hour_now.astimezone(timezone.get_default_timezone()).strftime('%d/%m/%Y %H:%M:%S')
-
-        # Adiciona a data formatada ao objeto informacoes_host
         informacoes_host.hour_now_formatted = data_hora_formatada
-
-        # Renderiza o template com as informações
         return render(request, 'dados/informacoes_host_template.html', {'informacoes_host': informacoes_host})
     else:
         return JsonResponse({'404': 'Host não encontrado'}, status=404)
@@ -35,7 +26,6 @@ def home(request):
 
 @api_view(['GET'])
 def last_minutes_hostname(request):
-    # Consulta para obter os últimos hostnames nos últimos 5 minutos
     agora = timezone.now()
     cinco_minutos_atras = agora - timezone.timedelta(minutes=30)
     hostnames_recentes = (
@@ -45,22 +35,20 @@ def last_minutes_hostname(request):
         .annotate(ultima_data=Max('hour_now'))
         .order_by('-ultima_data')
     )
-    # Converte a queryset para uma lista
     hostnames_lista = list(hostnames_recentes)
     return JsonResponse({'hostnames_recentes': hostnames_lista}, safe=False)
 
 
 @api_view(['GET'])
 def getdata(request):
-    # Obtém o parâmetro de consulta 'hostname' da URL
+    # espera que seja passado um hostname
     hostname = request.GET.get('hostname', '')
 
-    # Consulta para obter as informações mais recentes sobre o host fornecido
     informacoes_host = (
         HardwareInfo.objects
         .filter(hostname=hostname)
-        .order_by('-hour_now')  # Ordena pela data mais recente
-        .first()  # Limita a consulta para obter apenas o primeiro registro
+        .order_by('-hour_now')  
+        .first()
     )
 
     if informacoes_host:
