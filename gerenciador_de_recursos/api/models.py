@@ -36,7 +36,7 @@ class HardwareInfo(models.Model):
 
     # Boot Models
     boot_time = models.DateTimeField()
-    boot_uptime = models.TimeField()
+    boot_uptime = models.TextField(max_length=25)
 
     # Batery Models
     batery_percent_charge = models.FloatField()

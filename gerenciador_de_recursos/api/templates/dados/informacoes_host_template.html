@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações do Host</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            color: #007BFF;
+        }
+
+        .info-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            margin-bottom: 15px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .emoji {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="info-container">
+        <h1>Informações do Host</h1>
+        
+        <div class="info-item">
+            <span class="emoji">🖥️</span>
+            <span class="info-label">Hostname:</span> {{ informacoes_host.hostname }}
+        </div>
+        
+        <div class="info-item">
+            <span class="emoji">🕒</span>
+            <span class="info-label">Última Atualização:</span> {{ informacoes_host.hour_now_formatted }}
+        </div>
+        
+        <div class="info-item">
+            <span class="emoji">💻</span>
+            <span class="info-label">CPU Model:</span> {{ informacoes_host.cpu_model }}
+        </div>
+        
+        <div class="info-item">
+            <span class="emoji">🔢</span>
+            <span class="info-label">CPU Architecture:</span> {{ informacoes_host.cpu_architecture }}
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">🧠</span>
+            <span class="info-label">CPU Cores:</span> {{ informacoes_host.cpu_cores }}
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">💽</span>
+            <span class="info-label">CPU Logical Cores:</span> {{ informacoes_host.cpu_logical_cores }}
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">⚙️</span>
+            <span class="info-label">CPU Frequency:</span> {{ informacoes_host.cpu_Frequency }}
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">📈</span>
+            <span class="info-label">Load Average (1min/5min/15min):</span> {{ informacoes_host.load_1min }} / {{ informacoes_host.load_5min }} / {{ informacoes_host.load_15min }}
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">🧮</span>
+            <span class="info-label">Memory Total:</span> {{ informacoes_host.memory_total }}
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">📊</span>
+            <span class="info-label">Memory Available:</span> {{ informacoes_host.memory_available }}
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">📉</span>
+            <span class="info-label">Memory Used:</span> {{ informacoes_host.memory_used }}
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">📊</span>
+            <span class="info-label">Memory Percent:</span> {{ informacoes_host.memory_percent }}%
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">💾</span>
+            <span class="info-label">Disk Total:</span> {{ informacoes_host.disk_total }}
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">📊</span>
+            <span class="info-label">Disk Free:</span> {{ informacoes_host.disk_free }}
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">📉</span>
+            <span class="info-label">Disk Used:</span> {{ informacoes_host.disk_used }}
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">📊</span>
+            <span class="info-label">Disk Percent:</span> {{ informacoes_host.disk_percent }}%
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">🔄</span>
+            <span class="info-label">Boot Time:</span> {{ informacoes_host.boot_time }}
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">⏰</span>
+            <span class="info-label">Boot Uptime:</span> {{ informacoes_host.boot_uptime }}
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">🔋</span>
+            <span class="info-label">Battery Percent Charge:</span> {{ informacoes_host.batery_percent_charge }}%
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">🔌</span>
+            <span class="info-label">Battery Power Source:</span> {{ informacoes_host.batery_power_is_plug }}
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">💿</span>
+            <span class="info-label">System Version:</span> {{ informacoes_host.system_version }}
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">💻</span>
+            <span class="info-label">System System Type:</span> {{ informacoes_host.system_system_type }}
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">🏢</span>
+            <span class="info-label">System Distribution:</span> {{ informacoes_host.system_distribution }}
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">⬇️</span>
+            <span class="info-label">Network Bytes Received:</span> {{ informacoes_host.network_bytes_recv }}
+        </div>
+
+        <div class="info-item">
+            <span class="emoji">⬆️</span>
+            <span class="info-label">Network Bytes Sent:</span> {{ informacoes_host.network_bytes_send }}
+        </div>
+
+    </div>
+</body>
+</html>
