@@ -1,0 +1,1 @@
+Centralização de dados atraves de um servidor, ajudar na visualização de infomações sobre os dispositivos, alem de possibilitar uso de tecnicas de data cience e ML para predizer quando um computador pode apresentar Anomalias.
